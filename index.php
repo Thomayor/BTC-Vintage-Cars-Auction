@@ -19,5 +19,6 @@ foreach ($result as $car) {
     echo '<br>';
   }
 
+</body>
 
-?>  
+</html>
