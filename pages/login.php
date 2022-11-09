@@ -1,12 +1,13 @@
 <?php
-$dbh = new PDO("mysql:dbname=CAR;host=127.0.0.1;port=8889", "root", "root");
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $dbh = new PDO("mysql:dbname=cars_btc;host=localhost", "root", "");
 
-$query = $dbh->prepare(
-"INSERT INTO cars (email, password) 
-VALUES ($_POST[email], $_POST[password]
-")
-
-
+    $query = $dbh->prepare(
+        "SELECT users.email, users.password FROM users"
+    );
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+}
 ?>
 
 
