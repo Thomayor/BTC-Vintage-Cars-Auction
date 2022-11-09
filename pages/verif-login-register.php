@@ -15,13 +15,13 @@ function register($nom, $prenom, $email, $password)
 
     // s'il n'y a pas encore d'user dans la base, la clé n'existe pas
     // si la clé n'existe pas
-    if (!array_key_exists("users", $_SESSION)) {
+    if (!array_key_exists("users", $_POST)) {
         // alors je crée un tableau d'users
-        $_SESSION['users'] = array();
+        $_POST['users'] = array();
         // sinon
     }
-    array_push($_SESSION['users'], $newUser);
-    var_dump($_SESSION);
+    array_push($_POST['users'], $newUser);
+    var_dump($_POST);
     return true;
 }
 
@@ -30,8 +30,8 @@ function register($nom, $prenom, $email, $password)
 function login(string $email, string $password)
 {
     session_start();
-    if (!empty($_SESSION['users'])) {
-        foreach ($_SESSION['users'] as $user) {
+    if (!empty($_POST['users'])) {
+        foreach ($_POST['users'] as $user) {
             if ($user['email'] == $email && $user['password'] == $password) {
                 return true;
             }

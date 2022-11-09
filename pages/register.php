@@ -1,7 +1,9 @@
-<?php
-$dbh= new PDO("mysql:dbname=btc-vintage-car-auction;host=127.0.0.1;port=8889","root","root");
+<!-- <?php
+$dbh = new PDO("mysql:dbname=btc-vintage-car-auction;host=127.0.0.1;port=8889", "root", "root");
 
-$query
+$query = $dbh->prepare("
+INSERT TO CAR (lastname, firstname, email, password, confirm) VALUES ($_POST[lastname], $_POST[firstname], $_POST[email], $_POST[password], $_POST[confirm]
+")
 
 
 
@@ -17,20 +19,21 @@ $query
 </head>
 
 <body>
-    <section>
-        <form action="" method="POST">
-        <input type="text" name="lastname" placeholder="nom" required />
-      <input type="text" name="firstname" placeholder="prenom" required />
-      <input type="email" name="email" placeholder="email" required />
-      <input type="password" name="password" placeholder="mot de passe" required />
-      <input type="password" name="confirm" placeholder="confirmer votre mot de passe" required />
+  <section>
+
+    <form action="" method="$_POST">
+      <input type="text" name="lastname" placeholder="nom" value=<?php echo $_POST['lastname'] ?> required />
+      <input type="text" name="firstname" placeholder="prenom" value=<?php echo $_POST['firstname'] ?> required />
+      <input type="email" name="email" placeholder="email" value=<?php echo $_POST['email'] ?> required />
+      <input type="password" name="password" placeholder="mot de passe" value=<?php echo $_POST['password'] ?> required />
+      <input type="password" name="confirm" placeholder="confirmer votre mot de passe" value=<?php echo $_POST['confirm'] ?> required />
       <button>Valider</button>
-        </form>
-    </section>
+    </form>
+  </section>
 
 
 
 
 </body>
 
-</html>
+</html> -->
