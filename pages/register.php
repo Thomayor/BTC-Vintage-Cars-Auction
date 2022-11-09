@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $dbh = new PDO("mysql:dbname=cars_btc;host=localhost", "root", "");
+  $dbh = new PDO("mysql:dbname=CAR;host=localhost", "root", "");
 
   $query = $dbh->prepare(
     "INSERT INTO users (`lastname`,`firstname`,`email`,`password`) 
