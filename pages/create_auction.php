@@ -2,7 +2,7 @@
 
 <?php
 
-$dbh= new PDO("mysql:dbname=CAR;host=127.0.0.1;port=8889","root","root");
+$dbh= new PDO("mysql:dbname=BTC;host=127.0.0.1;port=8889","root","root");
 
 $query = $dbh->prepare("INSERT INTO cars (`model`,`brand`,`power`,`year`,`description`,`price`,`img`,`date_time`) VALUES (?,?,?,?,?,?,?,?)");
             
@@ -25,7 +25,7 @@ var_dump($params);
     <textarea name="description" value="<?php echo $_POST[`description`] ?>" placeholder="Commentez votre bolide"></textarea>
     <input type="text" name="price" placeholder="prix de vente" value="<?php echo $_POST[`price`] ?>">
     <input type="file" name="img" value="<?php echo $_POST[`img`] ?>">
-    <input type="date" name="date_time" value="<?php echo $_POST[`date_time`] ?>">
+    <input type="datetime-local" name="date_time" value="<?php echo $_POST[`date_time`] ?>">
     <button type="submit"> Envoyer</button>
 
 </form>

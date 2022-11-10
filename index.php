@@ -1,7 +1,10 @@
 <?php
-$dbh= new PDO("mysql:dbname=CAR;host=127.0.0.1;port=8889","root","root");
+$dbh= new PDO("mysql:dbname=BTC;host=127.0.0.1;port=8889","root","root");
 
-$query= $dbh->prepare("SELECT model,brand,power,year,description,price,img,date_time from cars");
+$query= $dbh->prepare("SELECT c.model,c.brand,c.power,c.year,c.description,c.price,c.img,c.date_time, u.lastname ,u.firstname 
+FROM `cars` as c 
+LEFT JOIN users as u 
+ON c.user_id=u.id");
 $query->execute();
 $result=$query->fetchAll(PDO::FETCH_ASSOC);
 
