@@ -26,8 +26,8 @@
 } */
 
 
-// ---------------------
-/* function login(string $email, string $password)
+
+function login(string $email, string $password)
 {
     session_start();
     if (!empty($_POST['users'])) {
@@ -39,7 +39,7 @@
     }
     return false;
 }
- */
+
 
 
 // --------------- VERRIFICATION DE CONNEXION --------------
