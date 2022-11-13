@@ -1,4 +1,8 @@
 <?php
+session_start();
+
+echo "bonjour " . $_SESSION["email"];
+
 $dbh= new PDO("mysql:dbname=BTC;host=127.0.0.1;port=8889","root","root");
 
 $query= $dbh->prepare("SELECT c.model,c.brand,c.power,c.year,c.description,c.price,c.img,c.date_time, u.lastname ,u.firstname 
@@ -13,7 +17,7 @@ $result=$query->fetchAll(PDO::FETCH_ASSOC);
 foreach ($result as $car) {
     echo '<br>';
     echo '<br>';
-    echo 'Vintage Car: ' . $car[""];
+    echo 'Vintage Car: ' ;
     echo '<ul>';
     foreach ($car as $key => $value) {
       echo "<li>" . $key . ' : ' . $value . "</li>";

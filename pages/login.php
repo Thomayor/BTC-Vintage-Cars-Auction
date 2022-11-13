@@ -1,42 +1,39 @@
 <?php
-  if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-  }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+session_start();
+
+echo "bonjour " . $_SESSION["email"];
+
+
+
     
     $dbh = new PDO("mysql:dbname=BTC;host=127.0.0.1;port=8889","root","root");
     
-    $query = $dbh->prepare(
-        "SELECT users.email, users.password, users.id FROM users WHERE email= ? AND password= ?"
-    );
-    $query->execute([$_POST['email'], $_POST['password']]);
-    $result = $query->fetchAll(PDO::FETCH_ASSOC);
-var_dump($result);
-    var_dump($_SESSION['user_id']);
-    foreach($result as $key => $value){
-            echo $value['id'] ."</br>" ."</br>";
-            $_SESSION['user_id']=$value['id'];
-
-            $id= $_SESSION['user_id'];
-
-
-     }
-  
-    if (!empty($_SESSION)){
-        /* $id = ;
-        $_SESSION["user_id"] = $id;
-                header("Location: http://localhost:8888/BTC/index.php"); */
-            }
-            
+    if (isset($_POST["login"])) {
         
-    }
+        if (empty($_POST["email"]) || empty($_POST["password"])) {
+            echo "<p>Veuillez renseigner tous les champs</p>";
+        } else {
+
+            $query = $dbh->prepare(
+                "SELECT users.email, users.password FROM users WHERE email= ? AND password= ?"
+            );
     
+            $query->execute([$_POST['email'], $_POST['password']]);
 
+            $count = $query->rowCount();
+            if($count > 0){
+                $_SESSION["email"] = $_POST["email"];
+                $_SESSION["password"] = $_POST["password"];
+                header("location: http://localhost:8888/BTC/index.php");
+            } else {
+                echo "Erreur 404";
+            }
+        }
 
+    }
 
-
-?>
+    ?>
 
 
 <!DOCTYPE html>
@@ -52,7 +49,7 @@ var_dump($result);
         <form action="" method="POST">
             <input type="email" name="email" placeholder="email" required value="<?php echo $_POST['email'] ?? "" ?>">
             <input type="password" name="password" placeholder="mdp : *****" required value="<?php echo $_POST['password'] ?? "" ?>">
-            <button type="submit">Connexion</button>
+            <button type="submit" name="login">Connexion</button>
         </form>
     </section>
 

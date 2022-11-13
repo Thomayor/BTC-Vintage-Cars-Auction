@@ -1,6 +1,8 @@
-
-
 <?php
+
+session_start();
+
+echo "bonjour " . $_SESSION["email"];
 
 $dbh= new PDO("mysql:dbname=BTC;host=127.0.0.1;port=8889","root","root");
 
