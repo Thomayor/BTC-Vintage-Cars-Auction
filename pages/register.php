@@ -1,15 +1,21 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $dbh = new PDO("mysql:dbname=cars_btc;host=localhost", "root", "");
+  $dbh = new PDO("mysql:dbname=BTC;host=127.0.0.1;port=8889","root","root");
 
   $query = $dbh->prepare(
     "INSERT INTO users (`lastname`,`firstname`,`email`,`password`) 
     VALUES (?, ?, ?, ?)"
   );
 
-  $result = $query->execute([$_POST['lastname'], $_POST['firstname'], $_POST['email'], $_POST['password']]);
+  $query->execute([$_POST['lastname'], $_POST['firstname'], $_POST['email'], $_POST['password']]);
 
-  $query->debugDumpParams();
+  if (!empty($query)){
+    header("Location: http://localhost:8888/BTC/pages/login.php");
+    var_dump($query);
+}
+else{
+echo '<p> Veuillez vous connecter</p>';
+}
 }
 ?>
 
