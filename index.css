@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Share+Tech+Mono&display=swap');
+
+
+html, body {
+  margin:0;
+  padding:0;
+  top:0;
+  left:0;
+  background-color: #f1e8e6;
+}
+
+.navbar-logo {
+  height: 60px;
+}
+
+.navbar {
+  z-index: 1;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  background: #19191c;
+}
+
+.menu a{
+  text-decoration: none;
+  color: #f9f9f9;
+  font-family: "Share Tech Mono";
+  text-transform: uppercase;
+}
+
+.navbar-search{
+  border: 0;
+  height: 40px;
+  background: #2f3339;
+  border-radius: 6px;
+  padding-left: 36px;
+  font-size: 16px;
+  font-family: "Share Tech Mono";
+}
+
+.navbar-search::placeholder{
+  color: #a7a7a7;
+}
+  
+  @keyframes appear {
+    0% {
+    opacity: 0;
+    translate: 0 50px;
+    }
+    100% {
+    opacity: 1;
+    }
+  }
