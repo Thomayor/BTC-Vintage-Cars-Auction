@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $dbh = new PDO("mysql:dbname=cars;host=127.0.0.1", "root", "");
+  $dbh = new PDO("mysql:dbname=BTC;host=127.0.0.1;port=8889","root","root");
 
   $query = $dbh->prepare(
     "INSERT INTO users (`lastname`,`firstname`,`email`,`password`) 

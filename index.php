@@ -6,7 +6,7 @@ echo "id" .$_SESSION['user_id'];
 
 $dbh = new PDO("mysql:dbname=BTC;host=127.0.0.1;port=8889", "root", "root");
 
-$query = $dbh->prepare("SELECT c.model,c.brand,c.power,c.year,c.description,c.price,c.img,c.date_time, u.lastname ,u.firstname 
+$query = $dbh->prepare("SELECT c.id,c.model,c.brand,c.price,c.img,c.date_time, u.lastname ,u.firstname 
 FROM `cars` as c 
 LEFT JOIN users as u 
 ON c.user_id=u.id");
@@ -52,18 +52,24 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
  <div class="list">
 <?php
- foreach ($result as $car) {
+ foreach ($result as $car => $value) {
+    echo '<br>';
+    echo '<br>';
+    echo 'Enchère n°'.$value["id"].' : ';
+  
+    echo '<ul>';
+    echo '<li>' ."Modele : " . $value["model"] .'</li>';
+    echo '<li>' ."Marque : " . $value["brand"] .'</li>';
+    echo '<li>'."Date : "  . $value["date_time"] .'</li>';
+    echo '<li>'."Prénom : "  . $value["firstname"] .'</li>';
+    echo '<li>'."Nom : "  . $value["lastname"] .'</li>';
   echo '<br>';
-  echo '<br>';
-  echo 'Vintage Car: ';
-  echo '<ul>';
-  foreach ($car as $key => $value) {
-    echo "<li>" . $key . ' : ' . $value . "</li>";
-  }
+  echo "<button>". "<a href='./pages/car_details.php'>" .'Voir détails'."</a>" . "</button>";
   echo "</ul>";
   echo '<br>';
 }
 ?>
+ </a>
  </div>
 </body>
 
