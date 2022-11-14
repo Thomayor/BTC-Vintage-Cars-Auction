@@ -2,13 +2,14 @@
 
 session_start();
 
-echo "bonjour " . $_SESSION["email"];
+echo "bonjour " . $_SESSION["email"] ;
+echo "test ".$_SESSION['user_id'];
 
 $dbh= new PDO("mysql:dbname=BTC;host=127.0.0.1;port=8889","root","root");
 
-$query = $dbh->prepare("INSERT INTO cars (`model`,`brand`,`power`,`year`,`description`,`price`,`img`,`date_time`) VALUES (?,?,?,?,?,?,?,?)");
+$query = $dbh->prepare("INSERT INTO cars (`model`,`brand`,`power`,`year`,`description`,`price`,`img`,`date_time`,`user_id`) VALUES (?,?,?,?,?,?,?,?,?)");
             
-$result = $query->execute([$_POST['model'], $_POST['brand'], $_POST['power'],$_POST['year'],$_POST['description'],$_POST['price'],$_POST['img'],$_POST['date_time']]);
+$result = $query->execute([$_POST['model'], $_POST['brand'], $_POST['power'],$_POST['year'],$_POST['description'],$_POST['price'],$_POST['img'],$_POST['date_time'],$_SESSION['user_id']]);
 
 $query->debugDumpParams();
 var_dump($params);

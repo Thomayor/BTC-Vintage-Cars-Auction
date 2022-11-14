@@ -1,8 +1,6 @@
 <?php
 
-session_start();
-
-echo "bonjour " . $_SESSION["email"];
+    session_start();
 
 
 
@@ -16,10 +14,15 @@ echo "bonjour " . $_SESSION["email"];
         } else {
 
             $query = $dbh->prepare(
-                "SELECT users.email, users.password FROM users WHERE email= ? AND password= ?"
+                "SELECT users.email, users.password, users.id FROM users WHERE email= ? AND password= ?"
             );
     
             $query->execute([$_POST['email'], $_POST['password']]);
+
+        
+                  
+             }
+
 
             $count = $query->rowCount();
             if($count > 0){
@@ -29,6 +32,12 @@ echo "bonjour " . $_SESSION["email"];
             } else {
                 echo "Erreur 404";
             }
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            var_dump($result);
+                var_dump($_SESSION['user_id']);
+                foreach($result as $key => $value){
+                        echo $value['id'] ."</br>" ."</br>";
+                        $_SESSION['user_id']=$value['id'];
         }
 
     }
