@@ -6,7 +6,7 @@ echo "bonjour " . $_SESSION["email"];
 
 $dbh = new PDO("mysql:dbname=cars;host=127.0.0.1", "root", "");
 
-$query = $dbh->prepare("SELECT c.model,c.brand,c.power,c.year,c.description,c.price,c.img,c.date_time, u.lastname ,u.firstname 
+$query = $dbh->prepare("SELECT c.id,c.model,c.brand,c.price,c.img,c.date_time, u.lastname ,u.firstname 
 FROM `cars` as c 
 LEFT JOIN users as u 
 ON c.user_id=u.id");
@@ -50,32 +50,21 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
   </header>
 
 
-  <div class="list">
-    <?php
-    foreach ($result as $car) {
-      echo '<br>';
-      echo '<br>';
-      echo 'Vintage Car: ';
-      echo '<ul>';
-      foreach ($car as $key => $value) {
-        echo "<li>" . $key . ' : ' . $value . "</li>";
-      }
-      echo "</ul>";
-      echo '<br>';
-
-      echo "<form method=post>";
-      echo "<input type=number name=enchere />";
-      echo "<button>Enchèrir</button>";
-      echo "</form>";
-    }
-
-    $query = $dbh->prepare("UPDATE `cars` SET `price` = '$_POST[enchere]'");
-
-    $query->execute();
-
-    $result = $query->fetchAll(PDO::FETCH_ASSOC);
-    ?>
-  </div>
+ <div class="list">
+<?php
+ foreach ($result as $car) {
+  echo '<br>';
+  echo '<br>';
+  echo 'Vintage Car: ';
+  echo '<ul>';
+  foreach ($car as $key => $value) {
+    echo "<li>" . $key . ' : ' . $value . "</li>";
+  }
+  echo "</ul>";
+  echo '<br>';
+}
+?>
+ </div>
 </body>
 
 </html>
