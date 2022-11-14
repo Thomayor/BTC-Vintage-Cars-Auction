@@ -56,17 +56,17 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
     echo '<br>';
     echo '<br>';
     echo 'Enchère n°'.$value["id"].' : ';
-  
+   $id= $value["id"];
     echo '<ul>';
     echo '<li>' ."Modele : " . $value["model"] .'</li>';
     echo '<li>' ."Marque : " . $value["brand"] .'</li>';
     echo '<li>'."Date : "  . $value["date_time"] .'</li>';
     echo '<li>'."Prénom : "  . $value["firstname"] .'</li>';
     echo '<li>'."Nom : "  . $value["lastname"] .'</li>';
-  echo '<br>';
-  echo "<button>". "<a href='./pages/car_details.php'>" .'Voir détails'."</a>" . "</button>";
-  echo "</ul>";
-  echo '<br>';
+    echo '<br>';
+    echo "<button>". "<a href='./pages/car_details.php/$id'>" .'Voir détails'."</a>" . "</button>";
+    echo "</ul>";
+    echo '<br>';
 }
 ?>
  </a>
