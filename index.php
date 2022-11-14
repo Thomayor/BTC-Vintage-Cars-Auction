@@ -4,7 +4,7 @@ session_start();
 echo "bonjour " . $_SESSION["email"];
 echo "id" .$_SESSION['user_id'];
 
-$dbh = new PDO("mysql:dbname=cars;host=127.0.0.1", "root", "");
+$dbh = new PDO("mysql:dbname=BTC;host=127.0.0.1;port=8889", "root", "root");
 
 $query = $dbh->prepare("SELECT c.model,c.brand,c.power,c.year,c.description,c.price,c.img,c.date_time, u.lastname ,u.firstname 
 FROM `cars` as c 
