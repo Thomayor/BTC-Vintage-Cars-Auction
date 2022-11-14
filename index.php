@@ -13,20 +13,6 @@ ON c.user_id=u.id");
 $query->execute();
 $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
-
-
-foreach ($result as $car) {
-  echo '<br>';
-  echo '<br>';
-  echo 'Vintage Car: ';
-  echo '<ul>';
-  foreach ($car as $key => $value) {
-    echo "<li>" . $key . ' : ' . $value . "</li>";
-  }
-  echo "</ul>";
-  echo '<br>';
-}
-
 ?>
 
 
@@ -43,11 +29,13 @@ foreach ($result as $car) {
 </head>
 
 <body>
-  <div class="background">
-    <nav class="navbar">
-      <img class="navbar-logo" src="./images/cars-auction-logo.png" />
-      <nav class="menu">
-        <a href="#" style="
+    <header>
+
+        <div class="background">
+            <nav class="navbar">
+                <img class="navbar-logo" src="./images/cars-auction-logo.png" />
+                <nav class="menu">
+                    <a href="#" style="
     padding-right: 15px">Home</a>
         <a href="#" style="
     padding-right: 15px">New Auction</a>
@@ -58,7 +46,25 @@ foreach ($result as $car) {
       </nav>
       <input type="text" placeholder="Search" class="navbar-search" />
     </nav>
-  </div>
+</div>
+</header>
+
+
+ <div class="list">
+<?php
+ foreach ($result as $car) {
+  echo '<br>';
+  echo '<br>';
+  echo 'Vintage Car: ';
+  echo '<ul>';
+  foreach ($car as $key => $value) {
+    echo "<li>" . $key . ' : ' . $value . "</li>";
+  }
+  echo "</ul>";
+  echo '<br>';
+}
+?>
+ </div>
 </body>
 
 </html>
