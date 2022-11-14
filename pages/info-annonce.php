@@ -3,24 +3,6 @@ session_start();
 
 $dbh = new PDO("mysql:dbname=cars;host=127.0.0.1", "root", "");
 
-// $query = $dbh->prepare("SELECT c.model,c.brand,c.power,c.year,c.description,c.price,c.img,c.date_time, u.lastname ,u.firstname 
-// FROM `cars` as c 
-// LEFT JOIN users as u 
-// ON c.user_id=u.id");
-// $query->execute();
-// $result = $query->fetchAll(PDO::FETCH_ASSOC);
-
-// foreach ($result as $car) {
-//     echo '<br>';
-//     echo '<br>';
-//     echo 'Vintage Car: ';
-//     echo '<ul>';
-//     foreach (011$car as $key => $value) {
-//         echo "<li>" . $key . ' : ' . $value . "</li>";
-//     }
-//     echo "</ul>";
-//     echo '<br>';
-// }
 
 ?>
 

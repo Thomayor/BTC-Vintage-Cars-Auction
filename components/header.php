@@ -1,5 +1,5 @@
 <?php
-header("Location: http://localhost/BTC/pages/login.php");
+header("Location: http://localhost/cars/pages/login.php");
 ?>
 
 
