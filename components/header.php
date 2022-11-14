@@ -1,5 +1,5 @@
 <?php
-
+header("Location: http://localhost/BTC/pages/login.php");
 ?>
 
 
@@ -12,9 +12,9 @@
 </head>
 
 <body>
-<nav>
-    
-</nav> 
+    <nav>
+
+    </nav>
 
 
 
