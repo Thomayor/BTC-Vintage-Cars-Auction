@@ -35,13 +35,13 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
       <nav class="navbar">
         <img class="navbar-logo" src="./images/cars-auction-logo.png" />
         <nav class="menu">
-          <a href="#" style="
+          <a href="http://localhost/btc-vintage-cars-auction/" style="
     padding-right: 15px">Home</a>
-          <a href="#" style="
+          <a href="http://localhost/btc-vintage-cars-auction/pages/create_auction.php" style="
     padding-right: 15px">New Auction</a>
-          <a href="#" style="
+          <a href="http://localhost/btc-vintage-cars-auction/pages/login.php" style="
     padding-right: 15px">Connexion</a>
-          <a href="#" style="
+          <a href="http://localhost/btc-vintage-cars-auction/pages/register.php" style="
     padding-right: 15px">Inscription</a>
         </nav>
         <input type="text" placeholder="Search" class="navbar-search" />
@@ -50,27 +50,51 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
   </header>
 
 
- <div class="list">
-<?php
- foreach ($result as $car => $value) {
-    echo '<br>';
-    echo '<br>';
-    echo 'Enchère n°'.$value["id"].' : ';
-   $id= $value["id"];
-    echo '<ul>';
-    echo '<li>' ."Modele : " . $value["model"] .'</li>';
-    echo '<li>' ."Marque : " . $value["brand"] .'</li>';
-    echo '<li>'."Date : "  . $value["date_time"] .'</li>';
-    echo '<li>'."Prénom : "  . $value["firstname"] .'</li>';
-    echo '<li>'."Nom : "  . $value["lastname"] .'</li>';
-    echo '<li>'."Date de fin de l'enchère : "  . $value["end_date"] .'</li>';
-    echo '<br>';
-    echo "<button>". "<a href='./pages/car_details.php?id=$id'>" .'Voir détails'."</a>" . "</button>";
-    echo "</ul>";
-    echo '<br>';
-}
-?>
- </div>
+  <label id="Compte"></label>
+  <div class="list">
+    <?php
+    foreach ($result as $car => $value) {
+      echo '<br>';
+      echo '<br>';
+      echo 'Enchère n°' . $value["id"] . ' : ';
+      $id = $value["id"];
+      echo '<ul>';
+      echo '<li>' . "Modele : " . $value["model"] . '</li>';
+      echo '<li>' . "Marque : " . $value["brand"] . '</li>';
+      echo '<li>' . "Date : "  . $value["date_time"] . '</li>';
+      echo '<li>' . "Prénom : "  . $value["firstname"] . '</li>';
+      echo '<li>' . "Nom : "  . $value["lastname"] . '</li>';
+      // echo '<li>' . "Date de fin de l'enchère : "  . $value["end_date"] . '</li>';
+      echo '<br>';
+      echo "<button>" . "<a href='./pages/car_details.php?id=$id'>" . 'Voir détails' . "</a>" . "</button>";
+      echo "</ul>";
+      echo '<br>';
+    }
+    ?>
+
+    <!-- <script type="text/javascript">
+      var Affiche = document.getElementById("Compte");
+
+      function Rebour() {
+        var date1 = new Date();
+        var date2 = new Date("Nov 16, 2022 00:00:00");
+        var sec = (date2 - date1) / 1000;
+        var n = 24 * 3600;
+        if (sec > 0) {
+          j = Math.floor(sec / n);
+          h = Math.floor((sec - (j * n)) / 3600);
+          mn = Math.floor((sec - ((j * n + h * 3600))) / 60);
+          sec = Math.floor(sec - ((j * n + h * 3600 + mn * 60)));
+          Affiche.innerHTML = " Il reste " + j + " j " + h + " h " + mn + " min " + sec + " s" + " " + "pour enchérir";
+          window.status = "Temps restant : " + j + " j " + h + " h " + mn + " min " + sec + " s ";
+        }
+        tRebour = setTimeout("Rebour();", 1000);
+      }
+      Rebour();
+    </script>
+  </div> -->
+
+
 </body>
 
 </html>

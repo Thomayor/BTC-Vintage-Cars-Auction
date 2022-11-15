@@ -9,17 +9,7 @@ $dbh = new PDO("mysql:dbname=cars;host=127.0.0.1", "root", "");
 
 $query = $dbh->prepare("INSERT INTO cars (`model`,`brand`,`power`,`year`,`description`,`price`,`img`,`date_time`,`user_id`) VALUES (?,?,?,?,?,?,?,?,?)");
 
-$result = $query->execute([
-    $_POST['model'],
-    $_POST['brand'],
-    $_POST['power'],
-    $_POST['year'],
-    $_POST['description'],
-    $_POST['price'],
-    $_POST['img'],
-    $_POST['date_time'],
-    $_SESSION['user_id']
-]);
+$result = $query->execute([$_POST['model'] ?? "", $_POST['brand'] ?? "", $_POST['power'] ?? "", $_POST['year'] ?? "", $_POST['description'] ?? "", $_POST['price'] ?? "", $_POST['img'] ?? "", $_POST['date_time'] ?? "", $_SESSION['user_id']]);
 
 // $query->debugDumpParams();
 // var_dump($params);
