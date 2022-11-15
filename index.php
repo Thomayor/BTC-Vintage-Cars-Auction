@@ -63,6 +63,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
     echo '<li>'."Date : "  . $value["date_time"] .'</li>';
     echo '<li>'."Prénom : "  . $value["firstname"] .'</li>';
     echo '<li>'."Nom : "  . $value["lastname"] .'</li>';
+    echo '<li>'."Date de fin de l'enchère : "  . $value["end_date"] .'</li>';
     echo '<br>';
     echo "<button>". "<a href='./pages/car_details.php?id=$id'>" .'Voir détails'."</a>" . "</button>";
     echo "</ul>";

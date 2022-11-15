@@ -54,14 +54,14 @@ $names = $query->fetchAll(PDO::FETCH_ASSOC);
   echo '<li>'."Description: "  . $value["description"] .'</li>';
   echo '<li>' ."Prix : " . $value["price"] .'</li>';
   echo '<li>' ."Image : " . $value["img"] .'</li>';
-  echo '<li>'."Date : "  . $value["date_time"] .'</li>';
+  echo '<li>'."Date de début d'enchère: "  . $value["start_date"] .'</li>';
+  echo '<li>'."Date de fin d'enchère : "  . $value["end_date"] .'</li>';
+  echo '<br>';
  }
   foreach ($names as $name) {
-  echo '<li>'."Prénom : "  . $name["firstname"] .'</li>';
-  echo '<li>'."Nom : "  . $name["lastname"] .'</li>';
+  echo '<li>'."Propriétaire : "  . $name["firstname"]. PHP_EOL .$name["lastname"] .'</li>';
+  include_once "./auction.php";
   echo "</ul>";
-  echo '<br>';
-include_once "./auction.php";
 }
  ?>
   </div>
@@ -69,11 +69,11 @@ include_once "./auction.php";
 
 
 <?php
+
   $query = $dbh->prepare("UPDATE `history` SET `auction` = '$_POST[enchere]' ");
   
   $query->execute();    
   
   $result = $query->fetchAll(PDO::FETCH_ASSOC);
-
 
   ?>
