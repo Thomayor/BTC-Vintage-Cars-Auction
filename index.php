@@ -52,16 +52,22 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
  <div class="list">
 <?php
- foreach ($result as $car) {
-  echo '<br>';
-  echo '<br>';
-  echo 'Vintage Car: ';
-  echo '<ul>';
-  foreach ($car as $key => $value) {
-    echo "<li>" . $key . ' : ' . $value . "</li>";
-  }
-  echo "</ul>";
-  echo '<br>';
+ foreach ($result as $car => $value) {
+    echo '<br>';
+    echo '<br>';
+    echo 'Enchère n°'.$value["id"].' : ';
+   $id= $value["id"];
+    echo '<ul>';
+    echo '<li>' ."Modele : " . $value["model"] .'</li>';
+    echo '<li>' ."Marque : " . $value["brand"] .'</li>';
+    echo '<li>'."Date : "  . $value["date_time"] .'</li>';
+    echo '<li>'."Prénom : "  . $value["firstname"] .'</li>';
+    echo '<li>'."Nom : "  . $value["lastname"] .'</li>';
+    echo '<li>'."Date de fin de l'enchère : "  . $value["end_date"] .'</li>';
+    echo '<br>';
+    echo "<button>". "<a href='./pages/car_details.php?id=$id'>" .'Voir détails'."</a>" . "</button>";
+    echo "</ul>";
+    echo '<br>';
 }
 ?>
  </div>

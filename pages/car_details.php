@@ -4,26 +4,47 @@ session_start();
 echo "bonjour " . $_SESSION["email"];
 echo "id" .$_SESSION['user_id'];
 
+$id=htmlspecialchars($_GET["id"]);
+
+var_dump($id);
+
+
 $dbh = new PDO("mysql:dbname=BTC;host=127.0.0.1;port=8889", "root", "root");
 
-$query = $dbh->prepare("SELECT c.id,c.model,c.brand,c.power,c.year,c.description,c.price,c.img,c.date_time, u.lastname ,u.firstname 
+$dbh->beginTransaction();
+
+$onecar = $dbh->query("SELECT *
+FROM cars 
+WHERE id=$id
+");
+
+$result = $onecar->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
+<?php
+$dbh = new PDO("mysql:dbname=BTC;host=127.0.0.1;port=8889", "root", "root");
+
+$query = $dbh->prepare("SELECT u.lastname ,u.firstname,c.id
 FROM `cars` as c 
 LEFT JOIN users as u 
 ON c.user_id=u.id
-");
-
+WHERE c.id=$id");
 $query->execute();
-$result = $query->fetchAll(PDO::FETCH_ASSOC);
-
+$names = $query->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
 <div class="list">
-<?php
+
+<?php 
+
+
  foreach ($result as $car => $value) {
   echo '<br>';
   echo '<br>';
   echo 'Enchère n°'.$value["id"].' : ';
+  $id= $value["id"];
 
   echo '<ul>';
   echo '<li>' ."Modele : " . $value["model"] .'</li>';
@@ -33,23 +54,26 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
   echo '<li>'."Description: "  . $value["description"] .'</li>';
   echo '<li>' ."Prix : " . $value["price"] .'</li>';
   echo '<li>' ."Image : " . $value["img"] .'</li>';
-  echo '<li>'."Date : "  . $value["date_time"] .'</li>';
-  echo '<li>'."Prénom : "  . $value["firstname"] .'</li>';
-  echo '<li>'."Nom : "  . $value["lastname"] .'</li>';
-  echo "</ul>";
+  echo '<li>'."Date de début d'enchère: "  . $value["start_date"] .'</li>';
+  echo '<li>'."Date de fin d'enchère : "  . $value["end_date"] .'</li>';
   echo '<br>';
-  echo "<form method=post>";
-  echo "<input type=number name=enchere />";
-  echo "<button>Enchérir</button>";
-  echo "</form>";
+ }
+  foreach ($names as $name) {
+  echo '<li>'."Propriétaire : "  . $name["firstname"]. PHP_EOL .$name["lastname"] .'</li>';
+  include_once "./auction.php";
+  echo "</ul>";
 }
+ ?>
+  </div>
 
 
-$query = $dbh->prepare("UPDATE `cars` SET `price` = '$_POST[enchere]'");
 
-$query->execute();
+<?php
 
-$result = $query->fetchAll(PDO::FETCH_ASSOC);
+  $query = $dbh->prepare("UPDATE `history` SET `auction` = '$_POST[enchere]' ");
+  
+  $query->execute();    
+  
+  $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
-?>
- </div>
+  ?>
