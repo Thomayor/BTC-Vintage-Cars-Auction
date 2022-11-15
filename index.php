@@ -64,7 +64,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
     echo '<li>'."Prénom : "  . $value["firstname"] .'</li>';
     echo '<li>'."Nom : "  . $value["lastname"] .'</li>';
     echo '<br>';
-    echo "<button>". "<a href='./pages/car_details.php/$id'>" .'Voir détails'."</a>" . "</button>";
+    echo "<button>". "<a href='./pages/car_details.php?id=$id'>" .'Voir détails'."</a>" . "</button>";
     echo "</ul>";
     echo '<br>';
 }
