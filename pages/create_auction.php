@@ -4,7 +4,7 @@ session_start();
 
 echo "Bonjour " . $_SESSION["email"] ;
 
-$dbh= new PDO("mysql:dbname=BTC;host=127.0.0.1;port=8889","root","root");
+$dbh = new PDO("mysql:dbname=cars;host=127.0.0.1", "root", "");
 
 $query = $dbh->prepare("INSERT INTO cars (`model`,`brand`,`power`,`year`,`description`,`price`,`img`,`start_date`,`end_date`,`user_id`) VALUES (?,?,?,?,?,?,?,?,?,?)");
             

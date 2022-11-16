@@ -2,9 +2,9 @@
 session_start();
 
 echo "bonjour " . $_SESSION["email"];
-echo "id" .$_SESSION['user_id'];
+// echo "id" . $_SESSION['user_id'];
 
-$dbh = new PDO("mysql:dbname=BTC;host=127.0.0.1;port=8889", "root", "root");
+$dbh = new PDO("mysql:dbname=cars;host=127.0.0.1", "root", "");
 
 $query = $dbh->prepare("SELECT c.id,c.model,c.brand,c.price,c.img,c.end_date, u.lastname ,u.firstname 
 FROM `cars` as c 

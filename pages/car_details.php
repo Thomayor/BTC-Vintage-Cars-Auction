@@ -1,15 +1,14 @@
 <?php
 session_start();
 
-echo "bonjour " . $_SESSION["email"];
-echo "id" .$_SESSION['user_id'];
+// echo "bonjour " . $_SESSION["email"];
 
-$id=htmlspecialchars($_GET["id"]);
+$id = htmlspecialchars($_GET["id"]);
 
 var_dump($id);
 
 
-$dbh = new PDO("mysql:dbname=BTC;host=127.0.0.1;port=8889", "root", "root");
+$dbh = new PDO("mysql:dbname=cars;host=127.0.0.1", "root", "");
 
 $dbh->beginTransaction();
 
@@ -23,7 +22,7 @@ $result = $onecar->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <?php
-$dbh = new PDO("mysql:dbname=BTC;host=127.0.0.1;port=8889", "root", "root");
+$dbh = new PDO("mysql:dbname=cars;host=127.0.0.1", "root", "");
 
 $query = $dbh->prepare("SELECT u.lastname ,u.firstname,c.id
 FROM `cars` as c 

@@ -20,7 +20,7 @@ function horloge(){
 <?php
 
 
-$dbh = new PDO("mysql:dbname=BTC;host=127.0.0.1;port=8889", "root", "root");
+$dbh = new PDO("mysql:dbname=cars;host=127.0.0.1", "root", "");
 
 $query = $dbh->prepare("SELECT h.*, u.lastname ,u.firstname FROM `history` as h 
 LEFT JOIN users as u 
