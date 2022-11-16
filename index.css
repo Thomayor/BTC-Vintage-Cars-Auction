@@ -44,6 +44,46 @@ html, body {
 .navbar-search::placeholder{
   color: #a7a7a7;
 }
+.list{
+ display: flex;
+ 
+}
+
+.list ul{
+  list-style-type: none;
+  background-color: #19191c;
+  color: white;
+  text-align: center;
+}
+
+.list ul li img{
+  width:60%;
+}
+section{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section form input{
+  margin-bottom: 10px;
+}
+
+#listresult .list{
+display: block;
+}
+
+#listresult .result{
+  background-color: #980606ba;
+  color: wheat;
+  }
   
   @keyframes appear {
     0% {
