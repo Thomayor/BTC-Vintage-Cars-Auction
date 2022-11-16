@@ -5,7 +5,7 @@ session_start();
 
 
 
-$dbh = new PDO("mysql:dbname=cars;host=127.0.0.1", "root", "");
+$dbh = new PDO("mysql:dbname=BTC;host=127.0.0.1;port=8889","root","root");
 
 if (isset($_POST["login"])) {
 
